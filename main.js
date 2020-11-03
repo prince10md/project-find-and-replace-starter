@@ -21,7 +21,19 @@ function getCellElements (currentRowElement) {
 
 
 // YOUR CODE GOES HERE
-
+replaceAllButton.addEventListener("click", function() {
+    console.log('replaceAllButton clicked')
+    let findInputString = findInput.value
+    let replaceInputString = replaceInput.value
+    for (let index = 0; index < rowElements.length; index += 1) {
+       let currentCellElement = getCellElements(rowElements[index])
+       for (let innerIndex = 0; innerIndex < currentCellElement.length; innerIndex += 1)
+        if (currentCellElement[innerIndex].innerHTML.includes(findInputString)) {
+            let newCurrentElement = currentCellElement[innerIndex].innerHTML.replace(findInputString, replaceInputString)
+            currentCellElement[innerIndex].innerHTML = newCurrentElement
+        }
+    }
+})
 
 // One last thing: dedicate very careful attention to using variables and
 // naming them accurately.
